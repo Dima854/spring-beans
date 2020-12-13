@@ -5,20 +5,23 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AnimalsCage extends Timer {
+public class AnimalsCage {
 
 
     @Autowired
     @Qualifier("dog")
     private Animal animal;
+    private Timer timer;
 
-
+    public AnimalsCage(Timer timer) {
+        this.timer = timer;
+    }
 
     public void whatAnimalSay() {
         System.out.println("Say:");
         System.out.println(animal.toString());
         System.out.println("At:");
-        System.out.println(this.getTime().toString());
+        System.out.println(timer.getTime().toString());
         System.out.println("________________________");
     }
 }
